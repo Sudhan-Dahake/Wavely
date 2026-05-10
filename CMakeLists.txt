@@ -11,6 +11,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(Wavely
 	app/main.cpp
+	"digital signal processing/RingBuffer.cpp"
 )
 
 target_include_directories(Wavely PRIVATE
@@ -18,7 +19,7 @@ target_include_directories(Wavely PRIVATE
 	${CMAKE_SOURCE_DIR}/include
 	${CMAKE_SOURCE_DIR}/app
 	${CMAKE_SOURCE_DIR}/audio
-	${CMAKE_SOURCE_DIR}/'digital signal processing'
+	"${CMAKE_SOURCE_DIR}/digital signal processing"
 	${CMAKE_SOURCE_DIR}/matching
 	${CMAKE_SOURCE_DIR}/control
 )
