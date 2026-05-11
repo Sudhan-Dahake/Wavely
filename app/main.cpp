@@ -4,38 +4,41 @@
 #include "RingBuffer.h"
 #include "Energy.h"
 #include "Vad.h"
+#include "Window.h"
+#include "Similarity.h"
 
 int main() {
-        const float quietFrame[] = {
-            0.001f,
-            -0.001f,
-            0.002f,
-            -0.002f
+        
+	const float micFeatures[] = {
+            1.0f,
+            2.0f,
+            3.0f
         };
 
-        const float speechLikeFrame[] = {
-            0.10f,
-            -0.15f,
-            0.20f,
-            -0.12f
+        const float sameFeatures[] = {
+            1.0f,
+            2.0f,
+            3.0f
+        };
+
+        const float differentFeatures[] = {
+            3.0f,
+            2.0f,
+            1.0f
         };
 
 
-	const std::size_t quietFrameSize = sizeof(quietFrame) / sizeof(quietFrame[0]);
+	const std::size_t count = 3;
 
-	const std::size_t speechLikeFrameSize = sizeof(speechLikeFrame) / sizeof(speechLikeFrame[0]);
-
-	wavely::dsp::Vad vad(0.02f);
-
-
+	
 	std::cout << "Wavely starting...\n";
 
-	std::cout << "Is Quiet Frame Speech? "
-		  << vad.isSpeech(quietFrame, quietFrameSize)
+	std::cout << "Same Similarity: "
+		  << wavely::matching::cosineSimilarity(micFeatures, sameFeatures, count)
 		  << "\n";
 
-	std::cout << "is Speech-like Frame Speech? "
-		  << vad.isSpeech(speechLikeFrame, speechLikeFrameSize)
+	std::cout << "Different Similarity: "
+		  << wavely::matching::cosineSimilarity(micFeatures, differentFeatures, count)
 		  << "\n";
 
 	return 0;
