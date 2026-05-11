@@ -14,6 +14,8 @@ add_executable(Wavely
 	"digital signal processing/RingBuffer.cpp"
 	"digital signal processing/Energy.cpp"
 	"digital signal processing/Vad.cpp"
+	"digital signal processing/Window.cpp"
+	matching/Similarity.cpp
 )
 
 target_include_directories(Wavely PRIVATE
