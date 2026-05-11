@@ -12,6 +12,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(Wavely
 	app/main.cpp
 	"digital signal processing/RingBuffer.cpp"
+	"digital signal processing/Energy.cpp"
+	"digital signal processing/Vad.cpp"
 )
 
 target_include_directories(Wavely PRIVATE
